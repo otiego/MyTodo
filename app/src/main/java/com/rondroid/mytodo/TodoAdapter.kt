@@ -1,5 +1,6 @@
 package com.rondroid.mytodo
 
+import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,26 @@ class TodoAdapter(
 //        }
     }
 
+    fun addTodo(todo: Todo)  {
+        todos.add(todo)
+        notifyItemInserted(todos.size - 1)
+    }
+
+     fun deleteDoneRTodos(){
+         todos.removeAll { todo ->
+             todo.done
+         }
+         notifyDataSetChanged()
+     }
+
+    private fun toggleStrikeThrough(tvTodoTitle:TextView, isChecked: Boolean){
+        if (isChecked){
+            tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or STRIKE_THRU_TEXT_FLAG
+        }else{
+            tvTodoTitle.paintFlags =tvTodoTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
+        }
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         return TodoViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_todo_layout,parent,false))
@@ -32,10 +53,17 @@ class TodoAdapter(
         holder.itemView.apply {
             tvTodo.text = curTodo.todo
             cbTodo.isChecked = curTodo.done
+            toggleStrikeThrough(tvTodo,curTodo.done)
+            cbTodo.setOnCheckedChangeListener { _, b ->
+                toggleStrikeThrough(tvTodo,b)
+                curTodo.done = !curTodo.done
+            }
+            }
         }
-    }
 
     override fun getItemCount(): Int {
         return todos.size
     }
 }
+
+
