@@ -2,4 +2,7 @@
     <string name="app_name">MyTodo</string>
     <string name="todo_item">Example</string>
     <string name="example">Example</string>
+    <string name="add_todo">Add todo</string>
+    <string name="enter_todo_text">Enter Todo Text</string>
+    <string name="delete">Delete</string>
 </resources>

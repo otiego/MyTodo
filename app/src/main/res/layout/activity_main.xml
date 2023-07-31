@@ -19,7 +19,7 @@
         android:id="@+id/edvTodo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Todo Text"
+        android:hint="@string/enter_todo_text"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAdd"
@@ -29,8 +29,8 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add todo"
-        android:layout_marginRight="5dp"
+        android:text="@string/add_todo"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/bgaddbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnDelete" />
@@ -39,7 +39,7 @@
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
+        android:text="@string/delete"
         android:background="@drawable/bgdeletebtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
